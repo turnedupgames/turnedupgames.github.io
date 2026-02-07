@@ -11,44 +11,40 @@
             --light-purple: #a78bfa;
             --dark-bg: #0f172a;
             --card-bg: #1e293b;
-            --text-main: #ffffff; /* Forced white for clarity */
         }
 
         body { 
             background-color: var(--dark-bg); 
-            color: var(--text-main); 
+            color: #ffffff; 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
             padding: 0;
         }
 
-        /* Navigation - Right Aligned */
+        /* Fixed Full-Width Navigation */
         nav {
             background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
-            padding: 25px 0;
+            padding: 20px 40px; 
             position: sticky;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid #334155;
-        }
-
-        .nav-container {
             display: flex;
-            justify-content: space-between; /* This pushes logo left and links right */
+            justify-content: space-between; 
             align-items: center;
         }
 
         .nav-links {
             display: flex;
-            gap: 30px; /* Consistent spacing between links */
+            gap: 40px;
         }
 
         nav a {
-            color: #cbd5e1;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             transition: color 0.3s;
         }
 
@@ -56,51 +52,55 @@
 
         .logo { 
             font-weight: 900; 
-            font-size: 2.2rem; 
-            letter-spacing: 1px;
+            font-size: 2.4rem; 
+            letter-spacing: 1.5px;
             color: var(--light-purple); 
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 120px 0;
+            padding: 100px 20px;
             background: radial-gradient(circle at top, #4c1d95 0%, #0f172a 80%);
         }
 
-        .hero h1 { font-size: 5.5rem; font-weight: 800; margin-bottom: 20px; color: white; }
+        .hero h1 { font-size: 5.5rem; font-weight: 800; margin-bottom: 20px; }
         .hero p { font-size: 2rem; color: #cbd5e1; max-width: 700px; margin: 0 auto; }
 
-        /* Section Spacing & Headings */
-        .section-divider {
-            height: 100px; /* The gap/div before "Our Games" */
+        /* Adjusted Gap */
+        .section-spacer {
+            height: 60px;
         }
 
-        h2 { 
-            color: white !important; /* Forced white font */
-            text-align: center; 
-            margin-bottom: 60px; 
-            font-weight: 700;
-            font-size: 3.6rem;
+        .section-title {
+            color: #ffffff !important;
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 40px;
         }
 
-        /* Portfolio Cards */
+        /* Side-by-Side Portfolio Layout */
         .portfolio-grid {
             display: flex;
             justify-content: center;
             gap: 30px;
-            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .card {
             background: var(--card-bg);
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 24px;
             text-align: center;
             border: 1px solid #334155;
-            width: 100%;
-            max-width: 400px;
-            transition: transform 0.3s ease;
+            flex: 1; /* This makes both cards take equal width */
+            transition: transform 0.3s ease, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .card:hover {
@@ -110,96 +110,102 @@
 
         .badge {
             background: var(--primary-purple);
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 20px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: bold;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            align-self: center;
         }
 
-        /* Contact Section */
-        #contact { text-align: center; padding: 100px 0; }
+        /* About Section */
+        .about-container {
+            max-width: 1100px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+        }
+
+        /* Contact */
+        #contact { text-align: center; padding: 100px 20px; }
         .contact-btn {
             background: var(--primary-purple);
             color: white;
-            padding: 18px 45px;
+            padding: 20px 50px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             display: inline-block;
-            transition: all 0.3s;
         }
-        .contact-btn:hover { background: #5b21b6; transform: scale(1.05); color: white; }
 
-        footer { text-align: center; padding: 60px; border-top: 1px solid #334155; color: #64748b; }
+        footer { text-align: center; padding: 60px; color: #64748b; }
 
-        @media (max-width: 750px) {
-            .nav-container { flex-direction: column; gap: 20px; }
-            .nav-links { gap: 15px; }
+        /* Mobile Fix */
+        @media (max-width: 850px) {
+            nav { flex-direction: column; padding: 20px; gap: 15px; }
+            .nav-links { gap: 20px; }
             .hero h1 { font-size: 4rem; }
+            .portfolio-grid { flex-direction: column; align-items: center; }
+            .card { width: 100%; max-width: 500px; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="container nav-container">
-        <div class="logo">TURNED UP GAMES</div>
-        <div class="nav-links">
-            <a href="#games">Games</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Contact Us</a>
-        </div>
+    <div class="logo">TURNED UP GAMES</div>
+    <div class="nav-links">
+        <a href="#games">Games</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
     </div>
 </nav>
 
 <section class="hero">
-    <div class="container">
-        <h1>Crafting Digital Worlds</h1>
-        <p>Innovative mobile games and applications designed for performance and fun.</p>
-    </div>
+    <h1>Crafting Digital Worlds</h1>
+    <p>Innovative mobile experiences built with a foundation in Mathematics and Finance.</p>
 </section>
 
-<div class="section-divider"></div>
+<div class="section-spacer"></div>
 
-<section id="games" class="container">
-    <h2>Our Games</h2>
+<section id="games">
+    <h2 class="section-title">Our Games</h2>
+    
     <div class="portfolio-grid">
         <div class="card">
             <div class="badge">Coming Soon</div>
-            <h3 style="color: white;">OUTCAST</h3>
-            <p style="color: #cbd5e1;">A thrilling social deduction party game built for mobile devices. Challenge your friends, sharpen your wits, and find the imposter.</p>
+            <h3 style="color: white; font-size: 2.8rem;">OUTCAST</h3>
+            <p style="color: #cbd5e1; font-size: 1.6rem; line-height: 1.5;">A social deduction party game built for mobile devices. Challenge your friends, find the imposter, and survive the round.</p>
         </div>
-        
+
         <div class="card">
             <div class="badge" style="background: #475569;">In Development</div>
-            <h3 style="color: white;">Project: News</h3>
-            <p style="color: #cbd5e1;">A high-speed, minimalist news aggregator focusing on the latest in tech, sports, and culture.</p>
+            <h3 style="color: white; font-size: 2.8rem;">Project: News</h3>
+            <p style="color: #cbd5e1; font-size: 1.6rem; line-height: 1.5;">A high-speed, minimalist news aggregator focused on delivering daily breaking updates and trending culture.</p>
         </div>
     </div>
 </section>
 
-<section id="about" class="container" style="padding-top: 100px;">
-    <div class="card" style="max-width: 800px; margin: 0 auto; width: auto;">
-        <h2 style="margin-bottom: 20px;">About Us</h2>
-        <p style="text-align: center; color: #cbd5e1; font-size: 1.8rem; line-height: 1.6;">
-            We are an independent development studio specializing in cross-platform mobile experiences. 
-            By combining a foundation in <strong>Mathematics and Finance</strong> with cutting-edge <strong>Flutter & Dart</strong> development, we build apps that are as robust as they are engaging.
+<section id="about" class="about-container">
+    <div class="card" style="max-width: none;">
+        <h2 style="color: white; margin-bottom: 20px;">About Us</h2>
+        <p style="color: #cbd5e1; font-size: 1.8rem; line-height: 1.6;">
+            Turned Up Games is an independent development studio focused on high-performance mobile apps. 
+            With a background in <strong>Finance and Mathematics</strong>, we use <strong>Dart & Flutter</strong> to create robust, engaging gaming experiences.
         </p>
     </div>
 </section>
 
-<section id="contact" class="container">
-    <h2 style="margin-bottom: 20px;">Get In Touch</h2>
+<section id="contact">
+    <h2 style="color: white;">Get In Touch</h2>
     <p style="color: #cbd5e1; margin-bottom: 40px;">Ready to collaborate or have questions about our upcoming releases?</p>
     <a href="mailto:contact@turnedupgames.com" class="contact-btn">Email Us</a>
 </section>
 
 <footer>
-    <p>&copy; 2026 Turned Up Games. Built with passion for the mobile gaming community.</p>
+    <p>&copy; 2026 Turned Up Games.</p>
 </footer>
 
 </body>
